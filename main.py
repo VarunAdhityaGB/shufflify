@@ -17,6 +17,14 @@ token = SpotifyOAuth(
 )
 spotify = spotipy.Spotify(auth_manager=token)
 
+my_username = (spotify.me()['id'])
+token = SpotifyOAuth(
+    scope=scope,
+    username=my_username,
+    client_id="""CLIENT_ID""",
+    client_secret="""CLIENT_ID_SECRET""",
+    redirect_uri="http://127.0.0.1:8080",
+)   
 
 def create_playlist(name, desc):
     """Give the Name of the playlist and a short description."""
@@ -50,6 +58,7 @@ play_list, play_dict = get_playlist(0)
 root = tk.Tk()
 root.title("Shufflify")
 root.config(bg="#222224")
+root.iconbitmap("shuffle.ico")
 root.geometry("800x150")
 
 
